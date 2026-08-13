@@ -81,6 +81,7 @@ import { inboxId } from '@hcengineering/inbox'
 import { achievementId } from '@hcengineering/achievement'
 import communication, { communicationId } from '@hcengineering/communication'
 import { emojiId } from '@hcengineering/emoji'
+import { gifId } from '@hcengineering/gif'
 import { hulyMailId } from '@hcengineering/huly-mail'
 import { aiAssistantId } from '@hcengineering/ai-assistant'
 import { ratingId } from '@hcengineering/rating'
@@ -139,6 +140,7 @@ import '@hcengineering/chat-assets'
 import '@hcengineering/inbox-assets'
 import '@hcengineering/achievement-assets'
 import '@hcengineering/emoji-assets'
+import '@hcengineering/gif-assets'
 import '@hcengineering/media-assets'
 import '@hcengineering/communication-assets'
 import '@hcengineering/billing-assets'
@@ -298,6 +300,7 @@ function configureI18n (): void {
     async (lang: string) => await import(`@hcengineering/communication-assets/lang/${lang}.json`)
   )
   addStringsLoader(emojiId, async (lang: string) => await import(`@hcengineering/emoji-assets/lang/${lang}.json`))
+  addStringsLoader(gifId, async (lang: string) => await import(`@hcengineering/gif-assets/lang/${lang}.json`))
   addStringsLoader(billingId, async (lang: string) => await import(`@hcengineering/billing-assets/lang/${lang}.json`))
   addStringsLoader(
     hulyMailId,
@@ -508,6 +511,7 @@ export async function configurePlatform (onWorkbenchConnect?: () => Promise<void
     () => import(/* webpackChunkName: "communication" */ '@hcengineering/communication-resources')
   )
   addLocation(emojiId, () => import(/* webpackChunkName: "achievement" */ '@hcengineering/emoji-resources'))
+  addLocation(gifId, async () => await import(/* webpackChunkName: \"gif\" */ '@hcengineering/gif-resources'))
   if ((config.BILLING_URL ?? '') !== '') {
     addLocation(billingId, () => import(/* webpackChunkName: "billing" */ '@hcengineering/billing-resources'))
   }
