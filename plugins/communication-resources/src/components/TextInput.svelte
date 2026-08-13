@@ -163,6 +163,7 @@
         file: false,
         image: false,
         emoji: true,
+        gif: true,
         reference: true,
         hooks: {
           emptyContent: {
