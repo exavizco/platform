@@ -226,7 +226,7 @@ function addNodeContent (builder: NodeBuilder, node?: MarkupNode): void {
     // stringified value would treat an absent file-id as present and emit src="null".
     const rawFileId = attrs['file-id']
     const rawSrc = attrs.src
-    const imgAttrs: Record<string, string> = { 'data-type': 'gif' }
+    const imgAttrs: Record<string, string | undefined> = { 'data-type': 'gif' }
     if (rawFileId != null) {
       imgAttrs['file-id'] = toString(rawFileId)
       imgAttrs.src = toString(rawFileId)

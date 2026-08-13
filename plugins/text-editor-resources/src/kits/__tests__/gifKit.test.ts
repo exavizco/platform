@@ -74,3 +74,30 @@ describe('gif node semantics', () => {
     expect(Object.keys(attrs)).toEqual(expect.arrayContaining(['file-id', 'src', 'width', 'height', 'alt']))
   })
 })
+
+// T-56: BRD section 2 - implemented in every handler or it is a silent no-op in that surface.
+// Five files, not four: TextEditor.svelte holds the low-level export that ReferenceInput,
+// StyledTextEditor and the communication TextInput all delegate to.
+const HANDLERS = [
+  'plugins/text-editor/src/types.ts',
+  'plugins/text-editor-resources/src/components/TextEditor.svelte',
+  'plugins/text-editor-resources/src/components/CollaborativeTextEditor.svelte',
+  'plugins/text-editor-resources/src/components/ReferenceInput.svelte',
+  'plugins/text-editor-resources/src/components/StyledTextEditor.svelte',
+  'plugins/communication-resources/src/components/TextInput.svelte'
+]
+
+describe('insertGif across every editor handler', () => {
+  it.each(HANDLERS)('is declared or implemented in %s', (file) => {
+    const src = read(file)
+    expect(src.length).toBeGreaterThan(500)
+    expect(src).toContain('insertGif')
+  })
+
+  // Every file that implements insertEmoji must also implement insertGif. Pins the pairing so a
+  // sixth surface added later cannot quietly ship with only half the handler.
+  it('is implemented everywhere insertEmoji is', () => {
+    const missing = HANDLERS.filter((f) => read(f).includes('insertEmoji') && !read(f).includes('insertGif'))
+    expect(missing).toEqual([])
+  })
+})
