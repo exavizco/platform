@@ -14882,6 +14882,9 @@ importers:
       '@types/jest':
         specifier: ^29.5.5
         version: 29.5.14
+      '@types/node':
+        specifier: ^22.18.1
+        version: 22.19.0
       '@types/png-chunks-extract':
         specifier: ^1.0.2
         version: 1.0.2
@@ -28836,6 +28839,9 @@ importers:
       '@types/katex':
         specifier: ^0.16.0
         version: 0.16.8
+      '@types/node':
+        specifier: ^22.18.1
+        version: 22.19.0
       '@typescript-eslint/eslint-plugin':
         specifier: ^6.21.0
         version: 6.21.0(@typescript-eslint/parser@6.21.0(eslint@8.57.1)(typescript@5.9.3))(eslint@8.57.1)(typescript@5.9.3)
