@@ -1,5 +1,6 @@
 <!--
 // Copyright © 2024 Hardcore Engineering Inc.
+// Copyright © 2026 Exaviz.
 //
 -->
 
@@ -7,7 +8,7 @@
   import { Analytics } from '@hcengineering/analytics'
   import { type Blob, type BlobMetadata, type Ref } from '@hcengineering/core'
   import { getMetadata } from '@hcengineering/platform'
-  import presentation, { getFileUrl } from '@hcengineering/presentation'
+  import presentation, { getFileBlobUrl, getFileUrl } from '@hcengineering/presentation'
   import { convertToHTML } from '@hcengineering/print'
   import { EmbeddedHTML, Spinner, themeStore } from '@hcengineering/ui'
 
@@ -270,7 +271,7 @@
       <Spinner size="medium" />
     </div>
   {:else}
-    <EmbeddedHTML {src} {name} {css} {token} />
+    <EmbeddedHTML {src} {name} {css} resolveUrl={getFileBlobUrl} />
   {/if}
 {/if}
 
