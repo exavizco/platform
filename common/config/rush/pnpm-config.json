@@ -257,6 +257,9 @@
     // "@hcengineering/communication-server": "file:../../../communication/packages/server",
     // "@hcengineering/communication-query": "file:../../../communication/packages/query",
     // "@hcengineering/communication-client-query": "file:../../../communication/packages/client-query"
+
+    // Security: pin patched versions of transitive dependencies
+    "handlebars": "^4.7.10"
   },
 
   /**
